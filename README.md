@@ -2,34 +2,45 @@
 
 Name: I'll use Steme here, but it might be Statics or something else.
 
-What: A statically typed pure eager language.
+What: A statically typed pure eager language designed to be used
+in cooperation with Scheme.
 
-Code: Steme looks and feels like Scheme, but behaves more like ML:
-a statically typed eager language
+Code: Steme looks and feels like Scheme, but behaves more like ML.
+See [SOSML](
 
 Immutable: All Steme types are immutable,
 though at the Scheme level they may be mutable.
 
-Persistent:  Some but perhaps not all types have persistent variants.
+Persistence:  Some but perhaps not all types have persistent variants.
+
+Linear update:  Uniqueness types to make linear update safe?
 
 Procedures: Accept multiple arguments and return multiple values,
 unlike Haskell or ML.  Therefore no currying needed
-(see [SRFI 36](http://srfi.schemers.org/srfi-36/srfi-36.html).
+(see [SRFI 26](http://srfi.schemers.org/srfi-26/srfi-26.html).
 
 Macros: Same in Steme as in Scheme (unclear exactly what macros
-R7RS-large will be required to support).
+R7RS-large will be required to support);
+macroexpansion comes before type inference.
 Unclear whether low-level macros can be written in Steme.
 
-Tuples: Multiple values.
+Tuples: Multiple values, with
+[SRFI 195](https://srfi.schemers.org/srfi-195/srfi-195.html)
+for first-class multiple-value boxes when tuples must be first-class.
 
 Static typing: Code must typecheck using Hindley-Milner.
 
-Parametric polymorphism: As in ML.
+Parametric polymorphism: Let-polymorphism as in ML.
 Examples: list, vector, dictionary.
 
 Ad hoc polymorphism: Type classes as in Haskell.
 (ML has exactly one type class corresponding to Haskell Eq.)
-Support multi-parameter classes, as GHC does but Haskell 98 does not.
+
+Multi-parameter classes: Necessary to fully emulate ML module system.
+From the Haskell wiki:  "Naive use of MPTCs may result in ambiguity,
+so functional dependencies were developed as a method of resolving that ambiguity,
+declaring that some subset of the parameters
+is sufficient to determine the values of the others."
 
 Simple numeric types: Exact integer, exact rational,
 inexact real, inexact complex.
@@ -56,7 +67,7 @@ Such certifications can be global or local.
 
 Compilation targets:  R7RS Scheme,
 a particular Scheme with its type annotations
-(hoping that the Scheme compiler will remove type checks)
+(hoping that the Scheme compiler will remove type checks, or
 C code with stubs for a particular Scheme's FFI
 (minimal type checks to separate fixnums and bignums, etc.).
 Not a goal to compile to other random languages.
@@ -69,6 +80,7 @@ Exceptions:  Steme can raise an exception.
 Steme can also catch an exception and replace it
 with an eagerly computed value,
 but it does not know what the exception is.
+(Explain this.)
 
 Logging: Steme can log anything,
 but it is an error to attempt to reread the log.
