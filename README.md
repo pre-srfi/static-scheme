@@ -5,6 +5,10 @@ Name: I'll use Steme here, but it might be Statics or something else.
 What: A statically typed pure eager language designed to be used
 in cooperation with Scheme.
 
+Not: Steme is not [Typed Racket](https://docs.racket-lang.org/ts-guide/).
+It is not a set of annotations to standard Scheme, nor
+can it do everything that a Scheme program can do.
+
 Code: Steme looks and feels like Scheme, but behaves more like ML.
 See [SOSML](https://github.com/SOSML/SOSML) for some possible
 restrictions.
