@@ -6,7 +6,8 @@ What: A statically typed pure eager language designed to be used
 in cooperation with Scheme.
 
 Code: Steme looks and feels like Scheme, but behaves more like ML.
-See [SOSML](
+See [SOSML](https://github.com/SOSML/SOSML) for some possible
+restrictions.
 
 Immutable: All Steme types are immutable,
 though at the Scheme level they may be mutable.
