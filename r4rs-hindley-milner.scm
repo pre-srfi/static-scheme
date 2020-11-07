@@ -1028,3 +1028,11 @@
 ; 0
 ; (+ 1 (length (cdr x)))))) )
 ; (newline)
+
+; Here is another example (higher-order MAPCAR function);
+;
+; (sig '(define (m f a)
+; (if (null? a)
+; '()
+; (cons (f (car a))
+; (m f (cdr a)))))) ==> (-> (-> 'b 'a) list list)
