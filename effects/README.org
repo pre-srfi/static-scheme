@@ -1,0 +1,65 @@
+#+title: Steme Effects Language
+#+author: Marc Nieper-Wißkirchen
+
+* Syntax
+
+** Values
+
+#+BEGIN_EXAMPLE
+<value> ::= <variable>
+          | <literal>
+          | (thunk <computation>)
+          | (<function> <value>*)
+
+<function> ::= + | * | - | zero?
+
+<variable> ::= <identifier>
+
+<literal>         ::= <quotation> | <self-evaluating>
+<self-evaluating> ::= <boolean> | <number> | <vector>
+                    | <character> | <string> | <bytevector>
+<quotation>       ::= (quote <datum>)
+#+END_EXAMPLE
+
+** Computations
+
+#+BEGIN_EXAMPLE
+<computation> ::= (begin <computation>*)
+                | (car <computation>)
+                | (cdr <computation>)
+                | (cons <computation> <computation>)
+                | (force <value>)
+                | (if <value> <computation> <computation>)
+                | (lambda (<variable>*) <computation>)
+                | (letrec (<binding spec>*) <computation>)
+                | (receive (variable>*) <computation> <computation>)
+                | (values <value>*)
+                | (with-handler (<handler clause>*) <computation>)
+                | <application>
+                | <continuation>
+                | <operation>
+
+<application>  ::= (<computation> <value>*)
+<continuation> ::= (<continuation variable> <value>*)
+<operation>    ::= (<operator> <value>*)
+
+<operator> ::= display | raise
+
+<continuation variable> ::= <identifier>
+
+<binding spec> ::= (<variable> <computation>)
+
+<handler clause>  ::= <operator clause> | <values clause>
+<operator clause> ::= ((<operator> <continuation variable> <variable>*)
+                        <computation>)
+<values clause> ::= ((values <variable*>) <computation>)
+#+END_EXAMPLE
+
+** Programs
+#+BEGIN_EXAMPLE
+<program> ::= <computation>
+#+END_EXAMPLE
+
+* Semantics
+
+/TODO/
