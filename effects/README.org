@@ -4,6 +4,30 @@
 The core language currently implements the semantics described in [[https://doi.org/10.2168/LMCS-9(4:23)2013][Handling Algebraic Effects]]
 by Gordon D. Plotkin and Matija Pretnar.
 
+* Examples
+
+** Factorial
+
+The following example prints the factorial of 6.
+
+#+BEGIN_SRC scheme
+(with-handler
+    (((display k s)
+      (begin
+        (display s)
+        (display "\n")
+        (k))))
+  (letrec ((fact (lambda (n)
+                   (if (zero? n)
+                       (values 1)
+                       (receive (x)
+                           ((force fact) (- n 1))
+                         (values (* x n)))))))
+    (receive (res)
+        ((force fact) 6)
+      (display res))))
+#+END_SRC
+
 * Syntax
 
 ** Values
