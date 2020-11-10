@@ -1,6 +1,9 @@
 #+title: Steme Effects Language
 #+author: Marc Nieper-Wißkirchen
 
+The core language currently implements the semantics described in [[https://doi.org/10.2168/LMCS-9(4:23)2013][Handling Algebraic Effects]]
+by Gordon D. Plotkin and Matija Pretnar.
+
 * Syntax
 
 ** Values
