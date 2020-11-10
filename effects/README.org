@@ -2,7 +2,16 @@
 #+author: Marc Nieper-Wißkirchen
 
 The core language currently implements the semantics described in [[https://doi.org/10.2168/LMCS-9(4:23)2013][Handling Algebraic Effects]]
-by Gordon D. Plotkin and Matija Pretnar.
+by Gordon D. Plotkin and Matija Pretnar.  It uses Paul B. Levy's /call-by-push-value/ paradigm, which subsumes call-by-value and call-by-name,
+see [[https://link.springer.com/chapter/10.1007/3-540-48959-2_17][Call-by-Push-Value: A Subsuming Paradigm]].
+
+In the core language, we have a clear separation between /value terms/ and /computation terms/.  A value term evaluates to a single value 
+without side effect.  A computation term evaluates to (possibly) multiple values with possible side effects.  /Effect handlers/ dynamically 
+modify the side effects of computations.  Computations can be /thunked/ to become values and such values become computations when /forced/.
+
+#+BEGIN_CENTER
+Slogan: Values are, computations do.
+#+END_CENTER
 
 * Examples
 
