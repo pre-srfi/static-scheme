@@ -90,4 +90,6 @@ but it does not know what the exception is.
 Logging: Steme can log anything,
 but it is an error to attempt to reread the log.
 
+See also [Daphne's independent ideas](https://wiki.dpk.io/typing-in-scheme.html)
+
 Comment in the issues or at [*cowan@ccil.org*](mailto:cowan@ccil.org).
